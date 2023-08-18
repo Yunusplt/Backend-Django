@@ -1,0 +1,18 @@
+#Altyapi:
+#! Dockerhub dan aldik. 
+#! search e önce python yaz. en üstteki python image sec.
+#! basit birsey calistircaz en temel sey lazim. o yüzden tagslardan alpine yaziyorum. 
+FROM python:alpine3.18
+
+#Calisma alani:
+WORKDIR /app
+
+#Dosyalari aktar.
+# COPY [LOCALFILES] [DOCKERFILES]... localdeki bütün dosyalari WORKDIR(Calisma klasörü) icerisine kopyalama islemi.
+# COPY . . bu da kullanilabilir. 
+
+COPY app.py /app/
+
+# After Build, when run 
+# comut calistirma
+CMD python app.py
