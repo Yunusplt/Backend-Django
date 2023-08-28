@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,29 +19,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-
-# # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-# DATABASES = { 
-#     "default": { 
-#         "ENGINE": "django.db.backends.sqlite3", 
-#         "NAME": BASE_DIR / "db.sqlite3", 
-#     } 
-# } 
-
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-umz9g7w+parc@$+&eb2w@c4b8%%l^0n8fiod_$7mfuymr=03v@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-
-# DATABASES = { 
-#     "default": { 
-#         "ENGINE": "django.db.backends.sqlite3", 
-#         "NAME": BASE_DIR / "db.sqlite3", 
-#     } 
-# } 
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -55,16 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #third party apps
-    'rest_framework',
-    'drf_yasg',
-    'rest_framework.authtoken',   #!0708
-    'dj_rest_auth',
-
-    #myApp
-    'users',
-    
-
+    #!MY Apps
+    'templateApp',      #!2808
 ]
 
 MIDDLEWARE = [
@@ -78,11 +53,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'main.urls'
-
+#!2808###################################################################
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],  #!2808
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,6 +73,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -135,65 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+#!2808
+STATICFILES_DIR = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#!0708
-LOGGING = {
-    "version": 1,
-    # is set to True then all loggers from the default configuration will be disabled.
-    "disable_existing_loggers": True,
-    # Formatters describe the exact format of that text of a log record.
-    "formatters": {
-        "standard": {
-            "format": "[%(levelname)s] %(asctime)s %(name)s: %(message)s"
-        },
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    # The handler is the engine that determines what happens to each message in a logger.
-    # It describes a particular logging behavior, such as writing a message to the screen,
-    # to a file, or to a network socket.
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "formatter": "standard",
-            "level": "INFO",
-            "stream": "ext://sys.stdout",
-            },
-        'file': {
-            'class': 'logging.FileHandler',
-            "formatter": "verbose",
-            'filename': './debug.log',
-            'level': 'INFO',      #! terminalde hatalari gösterir. sadece warnin görmek istiyorsam. info sil warning ekle.
-        },
-    },
-    # A logger is the entry point into the logging system.
-    "loggers": {
-        "django": {
-            "handlers": ["console", 'file'],
-            # log level describes the severity of the messages that the logger will handle.
-            "level": config("DJANGO_LOG_LEVEL", "INFO"),
-            'propagate': True,
-            # If False, this means that log messages written to django.request
-            # will not be handled by the django logger.
-        },
-    },
-}
-#!0708
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        
-    ]
-}
-
-

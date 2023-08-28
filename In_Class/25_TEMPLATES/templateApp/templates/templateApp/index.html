@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Templates Home Page</title>
+    <link rel="stylesheet" href="static/style.css">
+
+  </head>
+  <body>
+    <h1>CLARUSWAY</h1>
+    {% comment %} variable {% endcomment %}
+    <p>{{ title }}</p>
+    <p>{{ path }}</p>
+    <p>{{ list }}</p>
+    <p>{{ list.0 }}</p>
+    <p>{{ list.1 }}</p>
+    <p>{{ dict }}</p>
+    <p>{{ dict.k1 }}</p>
+    <p>{{ number }}</p>
+
+    <ul>
+      {% for name in list %}
+      <li>{{ name }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if number > 0 %} number bigger than 0 {% else %} number lower or equal to
+    0 {% endif %}
+    <p>{{desc | title}}</p>
+
+    {% filter upper %}
+    <p>Have a great day!</p>
+    {% endfilter %}
+
+    <!-- <img src="static/images2.jpg" alt=""> -->
+    {% load static %}
+    <img src="{% static 'images2.jpg' %}" alt="">
+   
+
+  </body>
+</html>
