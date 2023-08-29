@@ -1,0 +1,35 @@
+{% extends 'templateApp/base.html' %}
+
+{% block body %}
+    
+    {% for std in object_list %}
+        <li>{{ std }} </li>
+        <li>{{ std.first_name }} </li>
+        <li>{{ std.last_name }}</li>
+        <li>{{ std.number }}</li>
+        <li><img src="{{ std.instance.picture.url }}" alt="picture"></li>
+
+    {% endfor %}
+        
+{% endblock body %}
+
+{% comment %}! asagisi FBV icin yukarisi CBV icin fark object_list {% endcomment %}
+
+{% comment %} {% extends 'templateApp/base.html' %}
+
+{% block body %}
+    
+    {% for std in students %}
+        <li>{{ std }} </li>
+        <li>{{ std.first_name }} </li>
+        <li>{{ std.last_name }}</li>
+        <li>{{ std.number }}</li>
+        <li><img src="" alt="picture"></li>
+
+    {% endfor %}
+        
+{% endblock body %} {% endcomment %}
+
+
+    
+    

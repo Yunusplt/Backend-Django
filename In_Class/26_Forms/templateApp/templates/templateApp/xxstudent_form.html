@@ -1,0 +1,18 @@
+{% extends 'templateApp/base.html' %}
+
+
+{% block title %}
+    this page for STUDENT ADD
+{% endblock title %}
+
+
+{% block body %}
+   <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="ADD">
+    </form>
+    
+{% endblock body %}
+
+{% comment %}! as_p hepsini parantez icinde gibi algilar.{% endcomment %}
