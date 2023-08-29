@@ -3,7 +3,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return HttpResponse("<h1>Welcome to DTL (Django Template Language)</h1>")
+     context={         
+          }             
+     return render(request,'templateApp/home.html',context)
+
+   
 
 
 def body(request):
@@ -20,3 +24,13 @@ def body(request):
         }
     return render(request,"templateApp/index.html", context)
     # return render({"name":"yunus"} , request="index.html")
+
+
+from .models import Student
+
+def studentView(request):
+     students=Student.objects.all()
+     context={ 
+          'students':students,
+          }             
+     return render(request,'templateApp/student.html',context)

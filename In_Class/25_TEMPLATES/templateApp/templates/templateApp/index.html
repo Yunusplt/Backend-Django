@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Templates Home Page</title>
-    <link rel="stylesheet" href="static/style.css">
+{% extends 'templateApp/base.html' %}   
+{% comment %} extends herzaman ilk satir olmali yorum bile olmamali üstünde {% endcomment %}
 
-  </head>
-  <body>
+{% block title %}
+  index sayfasindasiniz
+{% endblock title %}
+  
+{% block body %}
     <h1>CLARUSWAY</h1>
     {% comment %} variable {% endcomment %}
     <p>{{ title }}</p>
@@ -36,7 +34,10 @@
     <!-- <img src="static/images2.jpg" alt=""> -->
     {% load static %}
     <img src="{% static 'images2.jpg' %}" alt="">
+{% endblock body %}
+  
+
+
    
 
-  </body>
-</html>
+

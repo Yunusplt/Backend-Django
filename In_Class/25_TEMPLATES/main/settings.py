@@ -57,7 +57,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],  #!2808
+        'DIRS': [BASE_DIR/'templates'],  #!2808 ana klasör kullancaksam baseDir icindeki template de bak. 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
