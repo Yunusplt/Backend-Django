@@ -1,0 +1,53 @@
+{% extends 'todoApp/base.html' %}
+{% block container %}
+<h1>TASK LIST</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos  %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.description }}</td>
+                {% comment %} <td>{{ todo.get_priority_display }}</td>
+                <td>{{ todo.get_status_display }}</td> {% endcomment %}
+                <td>
+                    {% if todo.priority == 1 %}
+                    <b class="text-danger">{{todo.get_priority_display}}</b>
+                    {% elif  todo.priority == 2 %}
+                    <b class="text-warning">{{todo.get_priority_display}}</b>
+                    {% else %}
+                    <b class="text-info">{{todo.get_priority_display}}</b>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if todo.status == "c" %}
+                     <b class="text-danger">{{todo.get_status_display}}</b>
+                    {% elif  todo.status == "w" %}
+                    <b class="text-warning">{{todo.get_status_display}}</b>
+                    {% else %}
+                    <b class="text-info">{{todo.get_status_display}}</b>
+                    {% endif %}
+                </td>    
+                <td><a href="{% url 'todo_update' todo.id%}" > Update</a></td> 
+                <td><a href="{% url 'todo_delete' todo.id%}" onclick="return confirm('are you sure?')"> Delete</a></td> 
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <a href="{% url 'todo_add'%}"> Todo Add</a>
+    </div>
+{% endblock container %}
+
+
+{% comment %}! todo.get_priority_display seklinde yazarsak key degil value gösteriyor. {% endcomment %}

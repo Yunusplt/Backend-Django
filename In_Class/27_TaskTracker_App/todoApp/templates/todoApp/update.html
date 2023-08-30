@@ -1,0 +1,14 @@
+{% extends 'todoApp/base.html' %}
+
+
+{% block container %}
+    <h2>UPDATE PAGE</h2>
+    <form action="" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="UPDATE"/>
+    </form>
+    
+{% endblock container %}
+
+    
