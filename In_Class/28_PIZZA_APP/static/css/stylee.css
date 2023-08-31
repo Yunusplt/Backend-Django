@@ -1,0 +1,12 @@
+body {
+    background-color: chartreuse;
+    background-image: url(../images/nadiasgarden.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+.navbar {
+    background-color: #D1E6DD;
+}
