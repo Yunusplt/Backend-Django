@@ -9,12 +9,16 @@
     <link rel="stylesheet" href=" {% static 'css/stylee.css' %} ">
 </head>
 <body>
-    {% comment %} <h1>Base HTML Page</h1> {% endcomment %}
+    <div class="body">
+          {% comment %} <h1>Base HTML Page</h1> {% endcomment %}
     {% include 'pizzas/navbar.html' %}
    
     {% block content %}
         
-    {% endblock content %}
+    {% endblock content %}  
+    </div>
+
+    <script> src="{% static 'js/timeout.js' %}" </script>
     
 </body>
 </html>
